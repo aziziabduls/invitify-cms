@@ -168,8 +168,8 @@ export function NavMain({ items }: NavMainProps) {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear"
               >
                 <Link href="/dashboard/event/create">
-                  <PlusCircleIcon />
-                  <span>Quick Create</span>
+                  {/* <PlusCircleIcon /> */}
+                  <span>Quick Create Event</span>
                 </Link>
               </SidebarMenuButton>
               <Button
@@ -177,8 +177,11 @@ export function NavMain({ items }: NavMainProps) {
                 className="h-9 w-9 shrink-0 group-data-[collapsible=icon]:opacity-0"
                 variant="outline"
               >
-                <MailIcon />
-                <span className="sr-only">Inbox</span>
+                <Link href="/dashboard/event/create">
+                  {/* <MailIcon /> */}
+                  <PlusCircleIcon />
+                  <span className="sr-only">Create</span>
+                </Link>
               </Button>
             </SidebarMenuItem>
           </SidebarMenu>
