@@ -65,11 +65,17 @@ export const sidebarItems: NavGroup[] = [
         url: "/dashboard/event/event-list",
         icon: Clapperboard,
       },
-      {
+       {
         title: "Participant",
         url: "/dashboard/participant",
         icon: Users,
       },
+      {
+        title: "Attendance",
+        url: "/dashboard/attendance",
+        icon: Fingerprint,
+      },
+     
       {
         title: "Calendar",
         url: "/calendar",

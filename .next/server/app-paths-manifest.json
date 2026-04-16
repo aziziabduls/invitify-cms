@@ -1,10 +1,7 @@
 {
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/(main)/dashboard/event/event-list/page": "app/(main)/dashboard/event/event-list/page.js",
   "/(main)/dashboard/default/page": "app/(main)/dashboard/default/page.js",
-  "/(main)/dashboard/organizer/[id]/page": "app/(main)/dashboard/organizer/[id]/page.js",
-  "/(main)/dashboard/participant/page": "app/(main)/dashboard/participant/page.js",
-  "/(main)/dashboard/organizer/page": "app/(main)/dashboard/organizer/page.js",
-  "/(main)/dashboard/event/edit/[id]/page": "app/(main)/dashboard/event/edit/[id]/page.js",
-  "/(main)/dashboard/event/view/[id]/page": "app/(main)/dashboard/event/view/[id]/page.js"
+  "/(main)/dashboard/event/event-list/page": "app/(main)/dashboard/event/event-list/page.js",
+  "/(main)/dashboard/attendance/page": "app/(main)/dashboard/attendance/page.js",
+  "/(main)/auth/v2/login/page": "app/(main)/auth/v2/login/page.js"
 }
