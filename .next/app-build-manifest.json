@@ -11,6 +11,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(main)/dashboard/layout.js"
     ],
+    "/(main)/dashboard/participant/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/participant/page.js"
+    ],
     "/(main)/dashboard/attendance/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -30,11 +35,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(main)/dashboard/default/page.js"
-    ],
-    "/(main)/dashboard/event/event-list/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(main)/dashboard/event/event-list/page.js"
     ]
   }
 }
