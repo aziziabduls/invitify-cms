@@ -7,6 +7,12 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { ParticipantTable } from "./_components/participant-table";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Participants | Invitify",
+  description: "Manage and view all event participants.",
+};
 
 export default function ParticipantPage() {
   return (

@@ -99,7 +99,9 @@ export const participantColumns: ColumnDef<Participant>[] = [
     ),
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("final_price"));
-      return <div className="font-medium">{formatCurrency(amount)}</div>;
+      const currency = row.original.currency as any;
+      // formatCurrency read IDR or USD
+      return <div className="font-medium">{formatCurrency(amount, { currency })}</div>;
     },
   },
   {

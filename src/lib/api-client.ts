@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "sonner";
 import { APP_CONFIG } from "@/config/app-config";
 
 export const apiClient = axios.create({
@@ -12,14 +13,10 @@ export const apiClient = axios.create({
 apiClient.interceptors.request.use(
   (config) => {
     // You can add logic here to retrieve token from cookies or localStorage
-    const token = localStorage.getItem("token");
+    const token = typeof window !== 'undefined' ? localStorage.getItem("token") : null;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-    // const token = ...
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
     return config;
   },
   (error) => {
@@ -34,7 +31,14 @@ apiClient.interceptors.response.use(
   (error) => {
     // Handle global errors (e.g., 401 Unauthorized)
     if (error.response && error.response.status === 401) {
-      // Redirect to login or refresh token logic
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem("token");
+        toast.error("Unauthorized. Please login again.");
+
+        // Use window.location to ensure a full refresh and redirect
+        // to the login page
+        window.location.href = "/auth/v2/login";
+      }
     }
     return Promise.reject(error);
   }

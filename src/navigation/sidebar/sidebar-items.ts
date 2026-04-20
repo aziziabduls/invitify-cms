@@ -37,6 +37,7 @@ export interface NavMainItem {
   comingSoon?: boolean;
   newTab?: boolean;
   isNew?: boolean;
+  allowedRoles?: string[];
 }
 
 export interface NavGroup {
@@ -65,7 +66,7 @@ export const sidebarItems: NavGroup[] = [
         url: "/dashboard/event/event-list",
         icon: Clapperboard,
       },
-       {
+      {
         title: "Participant",
         url: "/dashboard/participant",
         icon: Users,
@@ -75,37 +76,28 @@ export const sidebarItems: NavGroup[] = [
         url: "/dashboard/attendance",
         icon: Fingerprint,
       },
-     
+
       {
         title: "Calendar",
-        url: "/calendar",
+        url: "/dashboard/calendar",
         icon: Calendar,
-        comingSoon: true,
       },
-      // {
-      //   title: "Invoice",
-      //   url: "/invoice",
-      //   icon: ReceiptText,
-      //   comingSoon: true,
-      // },
-      // {
-      //   title: "Users",
-      //   url: "/users",
-      //   icon: Users,
-      //   comingSoon: true,
-      // },
-      // {
-      //   title: "Roles",
-      //   url: "/roles",
-      //   icon: Lock,
-      //   comingSoon: true,
-      // },
-
-
     ],
   },
   {
     id: 2,
+    label: "Administration",
+    items: [
+      {
+        title: "User Management",
+        url: "/dashboard/admin/roles",
+        icon: Lock,
+        allowedRoles: ["SUPER_ADMIN"],
+      },
+    ],
+  },
+  {
+    id: 3,
     label: "Pages",
     items: [
       {
@@ -124,82 +116,16 @@ export const sidebarItems: NavGroup[] = [
         icon: Gauge,
         comingSoon: true,
       },
-      // {
-      //   title: "E-commerce",
-      //   url: "/dashboard/e-commerce",
-      //   icon: ShoppingBag,
-      //   comingSoon: true,
-      // },
-      // {
-      //   title: "Academy",
-      //   url: "/dashboard/academy",
-      //   icon: GraduationCap,
-      //   comingSoon: true,
-      // },
-      // {
-      //   title: "Logistics",
-      //   url: "/dashboard/logistics",
-      //   icon: Forklift,
-      //   comingSoon: true,
-      // },
-
-      // {
-      //   title: "Email",
-      //   url: "/mail",
-      //   icon: Mail,
-      //   comingSoon: true,
-      // },
-      // {
-      //   title: "Chat",
-      //   url: "/chat",
-      //   icon: MessageSquare,
-      //   comingSoon: true,
-      // },
-      // {
-      //   title: "Calendar",
-      //   url: "/calendar",
-      //   icon: Calendar,
-      //   comingSoon: true,
-      // },
-      // {
-      //   title: "Kanban",
-      //   url: "/kanban",
-      //   icon: Kanban,
-      //   comingSoon: true,
-      // },
       {
         title: "Invoice",
         url: "/invoice",
         icon: ReceiptText,
         comingSoon: true,
       },
-      // {
-      //   title: "Users",
-      //   url: "/users",
-      //   icon: Users,
-      //   comingSoon: true,
-      // },
-      {
-        title: "Roles",
-        url: "/roles",
-        icon: Lock,
-        comingSoon: true,
-      },
-      // {
-      //   title: "Authentication",
-      //   url: "/auth",
-      //   icon: Fingerprint,
-      //   subItems: [
-      //     { title: "Login v1", url: "/auth/v1/login", newTab: true },
-      //     { title: "Login v2", url: "/auth/v2/login", newTab: true },
-      //     { title: "Register v1", url: "/auth/v1/register", newTab: true },
-      //     { title: "Register v2", url: "/auth/v2/register", newTab: true },
-      //   ],
-      // },
     ],
   },
   {
-    id: 3,
+    id: 4,
     label: "Settings",
     items: [
       {

@@ -7,6 +7,12 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { OrganizerTable } from "./_components/organizer-table";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Organizers | Invitify",
+  description: "Manage and view all event organizers.",
+};
 
 export default function OrganizerPage() {
   return (

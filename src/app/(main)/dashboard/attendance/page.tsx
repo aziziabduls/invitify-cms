@@ -7,6 +7,12 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { AttendanceTable } from "./_components/attendance-table";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Attendance | Invitify",
+  description: "Scan participant QR codes to track attendance and show e-tickets.",
+};
 
 export default function AttendancePage() {
   return (

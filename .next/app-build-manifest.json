@@ -11,15 +11,40 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(main)/dashboard/layout.js"
     ],
+    "/(main)/dashboard/attendance/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/attendance/page.js"
+    ],
     "/(main)/dashboard/participant/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(main)/dashboard/participant/page.js"
     ],
-    "/(main)/dashboard/attendance/page": [
+    "/(main)/dashboard/event/event-list/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(main)/dashboard/attendance/page.js"
+      "static/chunks/app/(main)/dashboard/event/event-list/page.js"
+    ],
+    "/(main)/dashboard/organizer/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/organizer/page.js"
+    ],
+    "/(main)/dashboard/default/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/default/page.js"
+    ],
+    "/(main)/dashboard/crm/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/crm/page.js"
+    ],
+    "/(main)/dashboard/finance/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/finance/page.js"
     ],
     "/(main)/auth/v2/layout": [
       "static/chunks/webpack.js",
@@ -31,10 +56,35 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(main)/auth/v2/login/page.js"
     ],
-    "/(main)/dashboard/default/page": [
+    "/(main)/dashboard/[...not-found]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(main)/dashboard/default/page.js"
+      "static/chunks/app/(main)/dashboard/[...not-found]/page.js"
+    ],
+    "/(main)/dashboard/admin/roles/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/admin/roles/page.js"
+    ],
+    "/(main)/dashboard/event/create/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/event/create/page.js"
+    ],
+    "/(main)/dashboard/organizer/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/organizer/[id]/page.js"
+    ],
+    "/(main)/dashboard/calendar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/calendar/page.js"
+    ],
+    "/(main)/dashboard/event/view/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/dashboard/event/view/[id]/page.js"
     ]
   }
 }

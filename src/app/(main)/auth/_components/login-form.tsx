@@ -43,8 +43,10 @@ export function LoginForm() {
       localStorage.setItem("user", JSON.stringify(response.data.user));
       // redirect to dashboard
       window.location.href = "/dashboard";
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error fetching data:", error);
+      const errorMessage = error.response?.data?.error || "An unexpected error occurred. Please try again.";
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }

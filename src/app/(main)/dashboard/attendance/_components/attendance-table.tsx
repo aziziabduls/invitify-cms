@@ -56,15 +56,15 @@ export function AttendanceTable() {
       try {
         payload = JSON.parse(value);
         if (!payload.type || payload.type !== 'attendance_check') {
-          payload = { 
-            participantId: value, 
+          payload = {
+            participantId: value,
             type: 'attendance_check',
             eventId: null
           };
         }
       } catch {
-        payload = { 
-          participantId: value, 
+        payload = {
+          participantId: value,
           type: 'attendance_check',
           eventId: null
         };
@@ -168,11 +168,11 @@ export function AttendanceTable() {
                     </div>
                   )}
                 </div>
-                <Button 
-                  type="submit" 
-                  size="lg" 
+                <Button
+                  type="submit"
+                  size="lg"
                   disabled={isProcessing || !scanValue.trim()}
-                  className="px-8 font-bold"
+                  className="h-12 px-8 font-bold"
                 >
                   {isProcessing ? "Processing..." : "Check In"}
                 </Button>
@@ -211,11 +211,11 @@ export function AttendanceTable() {
         <CardContent className="flex size-full flex-col gap-4">
           <div className="overflow-hidden rounded-md border">
             {loading ? (
-                <div className="flex h-48 items-center justify-center">
-                    <Loader className="animate-spin text-primary" />
-                </div>
+              <div className="flex h-48 items-center justify-center">
+                <Loader className="animate-spin text-primary" />
+              </div>
             ) : (
-                <DataTable table={table} columns={attendanceColumns} />
+              <DataTable table={table} columns={attendanceColumns} />
             )}
           </div>
           <DataTablePagination table={table} />

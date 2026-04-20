@@ -67,11 +67,11 @@ export function ParticipantTable() {
         <CardContent className="flex size-full flex-col gap-4">
           <div className="overflow-hidden rounded-md border">
             {loading ? (
-                <div className="flex h-24 items-center justify-center">
-                    <Loader className="animate-spin" />
-                </div>
+              <div className="flex h-24 items-center justify-center">
+                <Loader className="animate-spin" />
+              </div>
             ) : (
-                <DataTable table={table} columns={participantColumns} />
+              <DataTable table={table} columns={participantColumns} />
             )}
           </div>
           <DataTablePagination table={table} />

@@ -1,7 +1,7 @@
 export const users = [
   {
     id: "1",
-    name: "Arham Khan",
+    full_name: "Arham Khan",
     username: "Aarhamkhnz",
     email: "hello@arhamkhnz.com",
     avatar: "/avatars/arhamkhnz.png",
@@ -9,7 +9,7 @@ export const users = [
   },
   {
     id: "2",
-    name: "Ammar Khan",
+    full_name: "Ammar Khan",
     username: "ammarkhnz",
     email: "hello@ammarkhnz.com",
     avatar: "",

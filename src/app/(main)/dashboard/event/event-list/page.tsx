@@ -1,5 +1,10 @@
 import { TableEventList } from "./_components/event-table";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Event List | Invitify",
+    description: "View event details.",
+};
 
 export default function Page() {
     return (

@@ -15,6 +15,7 @@ export const participantSchema = z.object({
   created_at: z.string(),
   updated_at: z.string(),
   event_name: z.string(),
+  currency: z.string().optional(),
 });
 
 export type Participant = z.infer<typeof participantSchema>;

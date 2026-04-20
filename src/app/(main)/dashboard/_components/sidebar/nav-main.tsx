@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -144,6 +144,19 @@ const NavItemCollapsed = ({
 export function NavMain({ items }: NavMainProps) {
   const path = usePathname();
   const { state, isMobile } = useSidebar();
+  const [userRole, setUserRole] = useState<string | null>(null);
+
+  useEffect(() => {
+    const userStr = localStorage.getItem("user");
+    if (userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        setUserRole(user.role);
+      } catch (e) {
+        console.error("Failed to parse user role", e);
+      }
+    }
+  }, []);
 
   const isItemActive = (url: string, subItems?: NavMainItem["subItems"]) => {
     if (subItems?.length) {
@@ -156,43 +169,63 @@ export function NavMain({ items }: NavMainProps) {
     return subItems?.some((sub) => path.startsWith(sub.url)) ?? false;
   };
 
+  // Role-based filtering
+  const filteredItems = items.map(group => ({
+    ...group,
+    items: group.items.filter(item => {
+      if (!item.allowedRoles) return true;
+      return userRole && item.allowedRoles.includes(userRole);
+    })
+  })).filter(group => group.items.length > 0);
+
+  // INCIDENTAL role restrictions: Show all but disable access except Attendance
+  const isIncidental = userRole === "INCIDENTAL";
+
   return (
     <>
       <SidebarGroup>
         <SidebarGroupContent className="flex flex-col gap-2">
           <SidebarMenu>
-            <SidebarMenuItem className="flex items-center gap-2">
-              <SidebarMenuButton
-                asChild
-                tooltip="Quick Create"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear"
-              >
-                <Link href="/dashboard/event/create">
-                  {/* <PlusCircleIcon /> */}
-                  <span>Quick Create Event</span>
-                </Link>
-              </SidebarMenuButton>
-              <Button
-                size="icon"
-                className="h-9 w-9 shrink-0 group-data-[collapsible=icon]:opacity-0"
-                variant="outline"
-              >
-                <Link href="/dashboard/event/create">
-                  {/* <MailIcon /> */}
-                  <PlusCircleIcon />
-                  <span className="sr-only">Create</span>
-                </Link>
-              </Button>
+            <SidebarMenuItem>
+              {state === "collapsed" && !isMobile ? (
+                <Button
+                  asChild
+                  size="icon"
+                  className="h-9 w-9 shrink-0"
+                  variant="outline"
+                  disabled={isIncidental}
+                >
+                  <Link href={isIncidental ? "#" : "/dashboard/event/create"} onClick={isIncidental ? (e) => e.preventDefault() : undefined}>
+                    <PlusCircleIcon className="h-4 w-4" />
+                    <span className="sr-only">Quick Create</span>
+                  </Link>
+                </Button>
+              ) : (
+                <SidebarMenuButton
+                  asChild
+                  tooltip="Quick Create"
+                  disabled={isIncidental}
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear shadow-sm"
+                >
+                  <Link href={isIncidental ? "#" : "/dashboard/event/create"} onClick={isIncidental ? (e) => e.preventDefault() : undefined}>
+                    <PlusCircleIcon className="mr-2 h-4 w-4" />
+                    <span>Quick Create Event</span>
+                  </Link>
+                </SidebarMenuButton>
+              )}
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>
-      {items.map((group) => (
+      {filteredItems.map((group) => (
         <SidebarGroup key={group.id}>
           {group.label && <SidebarGroupLabel>{group.label}</SidebarGroupLabel>}
           <SidebarGroupContent className="flex flex-col gap-2">
             <SidebarMenu>
               {group.items.map((item) => {
+                const isAttendance = item.title === "Attendance";
+                const isDisabled = isIncidental && !isAttendance;
+
                 if (state === "collapsed" && !isMobile) {
                   // If no subItems, just render the button as a link
                   if (!item.subItems) {
@@ -200,11 +233,12 @@ export function NavMain({ items }: NavMainProps) {
                       <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton
                           asChild
-                          aria-disabled={item.comingSoon}
+                          aria-disabled={item.comingSoon || isDisabled}
                           tooltip={item.title}
                           isActive={isItemActive(item.url)}
+                          disabled={isDisabled}
                         >
-                          <Link href={item.url} target={item.newTab ? "_blank" : undefined}>
+                          <Link href={isDisabled ? "#" : item.url} target={item.newTab ? "_blank" : undefined} onClick={isDisabled ? (e) => e.preventDefault() : undefined}>
                             {item.icon && <item.icon />}
                             <span>{item.title}</span>
                           </Link>
@@ -213,11 +247,11 @@ export function NavMain({ items }: NavMainProps) {
                     );
                   }
                   // Otherwise, render the dropdown as before
-                  return <NavItemCollapsed key={item.title} item={item} isActive={isItemActive} />;
+                  return <NavItemCollapsed key={item.title} item={{...item, comingSoon: item.comingSoon || isDisabled}} isActive={isItemActive} />;
                 }
                 // Expanded view
                 return (
-                  <NavItemExpanded key={item.title} item={item} isActive={isItemActive} isSubmenuOpen={isSubmenuOpen} />
+                  <NavItemExpanded key={item.title} item={{...item, comingSoon: item.comingSoon || isDisabled}} isActive={isItemActive} isSubmenuOpen={isSubmenuOpen} />
                 );
               })}
             </SidebarMenu>

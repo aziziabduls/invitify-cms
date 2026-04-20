@@ -21,6 +21,7 @@ type UseDataTableInstanceProps<TData, TValue> = {
   defaultPageIndex?: number;
   defaultPageSize?: number;
   getRowId?: (row: TData, index: number) => string;
+  meta?: any;
 };
 
 export function useDataTableInstance<TData, TValue>({
@@ -30,6 +31,7 @@ export function useDataTableInstance<TData, TValue>({
   defaultPageIndex,
   defaultPageSize,
   getRowId,
+  meta,
 }: UseDataTableInstanceProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
@@ -50,6 +52,7 @@ export function useDataTableInstance<TData, TValue>({
       columnFilters,
       pagination,
     },
+    meta,
     enableRowSelection,
     getRowId: getRowId ?? ((row) => (row as any).id.toString()),
     onRowSelectionChange: setRowSelection,

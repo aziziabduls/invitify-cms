@@ -45,24 +45,6 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   type __Unused = __Check
 }
 
-// Validate ../../src/app/(main)/auth/v1/login/page.tsx
-{
-  type __IsExpected<Specific extends AppPageConfig<"/auth/v1/login">> = Specific
-  const handler = {} as typeof import("../../src/app/(main)/auth/v1/login/page.js")
-  type __Check = __IsExpected<typeof handler>
-  // @ts-ignore
-  type __Unused = __Check
-}
-
-// Validate ../../src/app/(main)/auth/v1/register/page.tsx
-{
-  type __IsExpected<Specific extends AppPageConfig<"/auth/v1/register">> = Specific
-  const handler = {} as typeof import("../../src/app/(main)/auth/v1/register/page.js")
-  type __Check = __IsExpected<typeof handler>
-  // @ts-ignore
-  type __Unused = __Check
-}
-
 // Validate ../../src/app/(main)/auth/v2/login/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/auth/v2/login">> = Specific
@@ -90,10 +72,28 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   type __Unused = __Check
 }
 
+// Validate ../../src/app/(main)/dashboard/admin/roles/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/dashboard/admin/roles">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/dashboard/admin/roles/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/(main)/dashboard/attendance/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/dashboard/attendance">> = Specific
   const handler = {} as typeof import("../../src/app/(main)/dashboard/attendance/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/(main)/dashboard/calendar/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/dashboard/calendar">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/dashboard/calendar/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
