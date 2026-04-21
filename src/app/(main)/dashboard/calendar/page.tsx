@@ -31,14 +31,7 @@ export default function CalendarPage() {
       </Breadcrumb>
 
       <div className="flex flex-col gap-6">
-        <div className="flex items-center justify-between">
-          <div className="space-y-1">
-            <h2 className="text-2xl font-bold tracking-tight">Event Calendar</h2>
-            <p className="text-muted-foreground text-sm">
-              Schedule, track, and manage all your events in one unified view.
-            </p>
-          </div>
-        </div>
+
 
         <div className="flex flex-col lg:flex-row gap-6 items-start">
           <UpcomingEvents />

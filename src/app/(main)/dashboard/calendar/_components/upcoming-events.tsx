@@ -38,6 +38,15 @@ export function UpcomingEvents() {
 
   return (
     <div className="flex flex-col gap-4 w-full lg:w-[350px] shrink-0">
+      <div className="flex items-center justify-between mb-4">
+        <div className="space-y-1">
+          <h2 className="text-2xl font-bold tracking-tight">Event Calendar</h2>
+          <p className="text-muted-foreground text-sm">
+            Schedule, track, and manage all your events in one unified view.
+          </p>
+        </div>
+      </div>
+
       <Card className="border-muted/40 shadow-sm overflow-hidden bg-muted/5">
         <CardHeader className="pb-3 border-b border-muted/40 bg-background/50">
           <CardTitle className="text-lg font-bold flex items-center gap-2">
@@ -47,12 +56,12 @@ export function UpcomingEvents() {
             </span>
             Coming Soon
           </CardTitle>
-          <CardDescription className="text-xs">Next 4 scheduled events.</CardDescription>
+          <CardDescription className="text-xs">Next {events.length} scheduled events.</CardDescription>
         </CardHeader>
         <CardContent className="p-0">
           {loading ? (
             <div className="p-4 space-y-4">
-              {[1, 2, 3, 4].map((i) => (
+              {[1, 2, 3, 4, 5].map((i) => (
                 <div key={i} className="flex gap-3">
                   <Skeleton className="h-12 w-12 rounded-lg" />
                   <div className="space-y-2 flex-1">

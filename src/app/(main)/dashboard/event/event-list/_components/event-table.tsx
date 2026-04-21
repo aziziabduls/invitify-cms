@@ -16,6 +16,7 @@ import { apiClient } from "@/lib/api-client";
 import { recentLeadsColumns } from "./columns.config";
 import { toast } from "sonner";
 import axios from "axios";
+import { Input } from "@/components/ui/input";
 
 export function TableEventList() {
     const router = useRouter();
@@ -108,6 +109,14 @@ export function TableEventList() {
                                     <span className="hidden lg:inline">Loading</span>
                                 </Button>
                             )}
+                            <Input
+                                placeholder="Search events..."
+                                value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+                                onChange={(event) =>
+                                    table.getColumn("name")?.setFilterValue(event.target.value)
+                                }
+                                className="h-8 w-[150px] lg:w-[250px]"
+                            />
                             {/* add reload button */}
                             <Button variant="outline" size="sm" onClick={() => loadEvents()}>
                                 <RefreshCcw />

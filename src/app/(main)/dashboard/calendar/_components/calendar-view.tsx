@@ -1,24 +1,24 @@
 "use client";
 
 import * as React from "react";
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Plus, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  Plus,
   ExternalLink,
   MoreVertical
 } from "lucide-react";
-import { 
-  format, 
-  addMonths, 
-  subMonths, 
-  startOfMonth, 
-  endOfMonth, 
-  startOfWeek, 
-  endOfWeek, 
-  isSameMonth, 
-  isSameDay, 
-  addDays, 
+import {
+  format,
+  addMonths,
+  subMonths,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  isSameMonth,
+  isSameDay,
+  addDays,
   eachDayOfInterval,
   isToday
 } from "date-fns";
@@ -27,7 +27,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { apiClient } from "@/lib/api-client";
 import { cn } from "@/lib/utils";
-import { 
+import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -83,8 +83,8 @@ export function CalendarView() {
   };
 
   return (
-    <Card className="flex-1 shadow-sm border-muted/40">
-      <CardHeader className="flex flex-row items-center justify-between pb-4">
+    <Card className="flex-1 shadow-sm border-muted/40 bg-background">
+      <CardHeader className="flex flex-row items-center justify-between pb-4 ">
         <div className="space-y-1">
           <CardTitle className="text-xl font-bold">
             {format(currentDate, "MMMM yyyy")}
@@ -110,7 +110,7 @@ export function CalendarView() {
         </div>
       </CardHeader>
       <CardContent className="p-0">
-        <div className="grid grid-cols-7 border-t border-muted/40 bg-muted/50 text-center font-medium text-xs py-2 uppercase tracking-wider text-muted-foreground">
+        <div className="grid grid-cols-7 border-t border-muted/40 bg-muted/50 text-center font-medium text-xs py-2 tracking-tight text-muted-foreground">
           {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(day => (
             <div key={day} className="py-2">{day}</div>
           ))}
@@ -119,10 +119,10 @@ export function CalendarView() {
           {calendarDays.map((day, idx) => {
             const dayEvents = getEventsForDay(day);
             const isSelectedMonth = isSameMonth(day, monthStart);
-            
+
             return (
-              <div 
-                key={day.toString()} 
+              <div
+                key={day.toString()}
                 className={cn(
                   "min-h-[140px] border-b border-r border-muted/40 p-2 transition-colors hover:bg-muted/5",
                   !isSelectedMonth && "bg-muted/20 text-muted-foreground/50",
@@ -137,7 +137,7 @@ export function CalendarView() {
                   )}>
                     {format(day, "d")}
                   </span>
-                  
+
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
@@ -153,7 +153,7 @@ export function CalendarView() {
                     </Tooltip>
                   </TooltipProvider>
                 </div>
-                
+
                 <div className="space-y-1.5 overflow-y-auto max-h-[100px] scrollbar-hide">
                   {dayEvents.map(event => (
                     <Link key={event.id} href={`/dashboard/event/view/${event.id}`}>

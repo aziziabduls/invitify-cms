@@ -1,8 +1,8 @@
 {
-  "/(main)/dashboard/default/page": "app/(main)/dashboard/default/page.js",
-  "/(main)/dashboard/event/event-list/page": "app/(main)/dashboard/event/event-list/page.js",
   "/(main)/dashboard/attendance/page": "app/(main)/dashboard/attendance/page.js",
   "/(main)/dashboard/organizer/page": "app/(main)/dashboard/organizer/page.js",
-  "/(main)/dashboard/calendar/page": "app/(main)/dashboard/calendar/page.js",
-  "/(main)/dashboard/admin/roles/page": "app/(main)/dashboard/admin/roles/page.js"
+  "/(main)/dashboard/event/view/[id]/page": "app/(main)/dashboard/event/view/[id]/page.js",
+  "/(main)/dashboard/event/event-list/page": "app/(main)/dashboard/event/event-list/page.js",
+  "/(main)/dashboard/admin/roles/page": "app/(main)/dashboard/admin/roles/page.js",
+  "/(main)/dashboard/event/edit/[id]/page": "app/(main)/dashboard/event/edit/[id]/page.js"
 }
